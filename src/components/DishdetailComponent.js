@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
 
 class Dishdetail extends Component {
-    constructor(props) {
-        super(props);
-
-    }
 
     renderComments(comments) {
 
@@ -56,14 +52,16 @@ class Dishdetail extends Component {
     }
 
     render() {
-        if(this.props.selectedDish != null) 
+        if(this.props.dish != null) 
             return(
+                <div className="container">
                 <div className="row">
                 <div className="col-12 col-md-5 m-1">
-                    {this.renderDish(this.props.selectedDish)}
+                    {this.renderDish(this.props.dish)}
                 </div>
                 <div class="col-12 col-md-5 m-1">
-                    {this.renderComments(this.props.selectedDish.comments)}
+                    {this.renderComments(this.props.dish.comments)}
+                </div>
                 </div>
                 </div>
             );
