@@ -4,6 +4,7 @@ import { Breadcrumb, BreadcrumbItem, Modal, ModalBody, ModalHeader } from 'react
 import { Link } from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Button, Label, Col, Row } from 'reactstrap';
+import Loading from './LoadingComponent';
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
@@ -142,7 +143,25 @@ class CommentForm extends Component {
     }
 
     const Dishdetail = (props) => {
-        if(props.dish != null) 
+        if(props.isLoading) {
+            return(
+                <div className="container">
+                    <div className="row">
+                        <Loading />
+                    </div>
+                </div>
+            );
+        }
+        else if(props.errmess){
+            return(
+                <div className="container">
+                    <div className="row">
+                        <h4>{props.errmess}</h4>
+                    </div>
+                </div>
+            );
+        }
+        else if(props.dish != null) 
             return(
                 <div className="container">
                     <div className="row">
