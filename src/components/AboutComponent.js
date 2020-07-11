@@ -34,25 +34,34 @@ function About(props) {
         );
     });
 
-    if(props.leaders.isLoading) {
-        return(
-            <div className="container">
-                <div className="row">
-                    <Loading />
+    function RenderLeaders() {
+        if(props.leaders.isLoading) {
+            return(
+                <div className="container">
+                    <div className="row">
+                        <Loading />
+                    </div>
                 </div>
-            </div>
-        );
-    }
-    else if(props.leaders.errmess){
-        return(
-            <div className="container">
-                <div className="row">
-                    <h4>{props.leaders.errmess}</h4>
+            );
+        }
+        else if(props.leaders.errmess){
+            return(
+                <div className="container">
+                    <div className="row">
+                        <h4>{props.leaders.errmess}</h4>
+                    </div>
                 </div>
-            </div>
-        );
+            );
+        }
+        else {
+            return(
+                <Media list>
+                    {leaders}
+                </Media>
+            );
+        }
     }
-    else
+
     return(
         <div className="container">
             <div className="row">
@@ -108,9 +117,7 @@ function About(props) {
                     <h2>Corporate Leadership</h2>
                 </div>
                 <div className="col-12">
-                    <Media list>
-                        {leaders}
-                    </Media>
+                    <RenderLeaders />
                 </div>
             </div>
         </div>
